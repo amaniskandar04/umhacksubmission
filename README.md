@@ -1,6 +1,6 @@
 # 🌍 Easy2Wakaf: Centralized Waqf Donation Platform for Malaysia
 
-![MyWaqf Banner](https://drive.usercontent.google.com/download?id=1Jh1np9HQ1lXf-DKkXSRTpjT1KaELFUg-&export=view&authuser=0)
+![MyWaqf Banner](./banner.png)
 
 ## 🚀 Submission for UMHackathon 2025
 **Track:** Securities Commission Malaysia  
@@ -51,7 +51,7 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 
 | Donor Dashboard | Waqf Project Page | Admin Panel |
 |-----------------|-------------------|-------------|
-| ![img1](https://your-screenshot-link) | ![img2](https://your-screenshot-link) | ![img3](https://your-screenshot-link) |
+| ![img1](./ss1) | ![img2](./ss2) | ![img3](./ss3) |
 
 ---
 
