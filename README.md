@@ -47,9 +47,9 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshots Preview
 
-| Donor Dashboard | Waqf Project Page | Admin Panel |
+| Verification Page | Home Page | Profile Page |
 |-----------------|-------------------|-------------|
 | ![img1](./ss1) | ![img2](./ss2) | ![img3](./ss3) |
 
@@ -84,8 +84,20 @@ We worked closely with guidelines from Jabatan Wakaf, Zakat dan Haji (JAWHAR) to
 ---
 
 ## 📬 Contact
-📧 [your.email@example.com]  
-🔗 [LinkedIn / Portfolio / Website if applicable]
+📧 [Aman Iskandar]  
+🔗 [Linkedin](https://www.linkedin.com/in/aman-iskandar-mohamad-dzulhaidi-723932249/)
+
+📧 [Hakimi Mahadzir]  
+🔗 [Linkedin](https://www.linkedin.com/in/hakimi-mahadzir-a16039295/)
+
+📧 [Maxwell Jared]  
+🔗 [Linkedin](https://www.linkedin.com/in/maxwell-jared-daniel-215927298/)
+
+📧 [Jawwad Kabir]  
+🔗 [Linkedin](https://www.linkedin.com/in/jawwad-kabir/)
+
+📧 [Amir Izzhan]  
+🔗 [Email](mamirizzan04@gmail.com)
 
 ---
 
