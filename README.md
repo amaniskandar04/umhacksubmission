@@ -51,7 +51,7 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 
 | Verification Page | Home Page | Profile Page |
 |-----------------|-------------------|-------------|
-| ![img1](./ss1) | ![img2](./ss2) | ![img3](./ss3) |
+| ![img1](./ss1.png) | ![img2](./ss2.png) | ![img3](./ss3.png) |
 
 ---
 
