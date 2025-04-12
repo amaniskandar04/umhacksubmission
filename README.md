@@ -1,4 +1,4 @@
-# 🌍 Easy2Waqaf: Centralized Waqf Donation Platform for Malaysia
+# 🌍 Easy2Wakaf: Centralized Waqf Donation Platform for Malaysia
 
 ![MyWaqf Banner](https://drive.google.com/file/d/1Jh1np9HQ1lXf-DKkXSRTpjT1KaELFUg-/view?usp=drive_link)
 
@@ -15,7 +15,7 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 ---
 
 ## 💡 What It Does
-**MyWaqf** is a fintech-powered platform that allows:
+**Easy2Wakaf** is a fintech-powered platform that allows:
 - 💸 **Centralized Waqf Collection:** Donors can contribute to verified projects across Malaysian states.
 - 🔎 **Transparent Tracking:** Real-time fund visibility using dashboards and blockchain-inspired integrity.
 - 📊 **Impact Analytics:** Interactive PowerBI dashboards to monitor fund utilization and social outcomes.
