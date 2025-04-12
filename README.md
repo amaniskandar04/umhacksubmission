@@ -1,6 +1,6 @@
 # 🌍 Easy2Wakaf: Centralized Waqf Donation Platform for Malaysia
 
-![MyWaqf Banner](https://drive.google.com/file/d/1Jh1np9HQ1lXf-DKkXSRTpjT1KaELFUg-/view?usp=drive_link)
+![MyWaqf Banner](https://drive.google.com/uc?export=view&id=1Jh1np9HQ1lXf-DKkXSRTpjT1KaELFUg-)
 
 ## 🚀 Submission for UMHackathon 2025
 **Track:** Securities Commission Malaysia  
