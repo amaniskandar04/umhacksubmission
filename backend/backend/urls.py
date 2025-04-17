@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/analyser/', include('analyser.urls')),  # Link to your analyser app
     path('api/waqf/', include('waqf.urls')),  # Link to your waqf app
 ]

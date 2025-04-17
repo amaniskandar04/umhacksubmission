@@ -2,10 +2,10 @@ from PIL import Image
 import google.generativeai as genai
 import io
 
-YOUR_GEMINI_API_KEY = "AIzaSyCVjbqv-kjeY_QViT2BzrhJZ1RwGX2Xd_U"
+YOUR_GEMINI_API_KEY = ""
 genai.configure(api_key=YOUR_GEMINI_API_KEY)
 
-model = genai.GenerativeModel("gemini-pro")
+model = genai.GenerativeModel(model_name="models/gemini-pro")
 vision_model = genai.GenerativeModel("gemini-pro-vision")
 
 def ask_gemini(prompt):
