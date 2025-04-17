@@ -1,6 +1,7 @@
 import pytesseract
 from PIL import Image
 import mimetypes
+from .gemini import ask_gemini
 
 def process_file(file_path):
     mime_type, _ = mimetypes.guess_type(file_path)
