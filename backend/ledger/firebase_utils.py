@@ -1,4 +1,5 @@
-import time
+import datetime
+import pytz
 import hashlib
 from backend.firebase import db
 from firebase_admin import firestore
@@ -9,7 +10,12 @@ def hash_transaction_data(data: dict) -> str:
     return hashlib.sha256(data_string.encode()).hexdigest()
 
 def log_transaction(user_id, transaction_type, amount):
-    timestamp = int(time.time())
+    # Define Malaysia timezone
+    malaysia_tz = pytz.timezone('Asia/Kuala_Lumpur')
+
+    # Get current time in Malaysia time
+    timestamp_dt = datetime.datetime.now(malaysia_tz)
+    timestamp_unix = int(timestamp_dt.timestamp())
 
     user_txn_ref = db.collection('transactions').document(user_id).collection('transaction_log')
 
@@ -24,18 +30,24 @@ def log_transaction(user_id, transaction_type, amount):
         'user_id': user_id,
         'type': transaction_type,
         'amount': amount,
-        'timestamp': timestamp,
+        'timestamp': timestamp_dt,
         'prev_hash': prev_hash or '',
     }
 
     # Generate current hash
-    transaction_data['hash'] = hash_transaction_data(transaction_data)
+    transaction_data['hash'] = hash_transaction_data({
+        'user_id': user_id,
+        'type': transaction_type,
+        'amount': amount,
+        'timestamp': timestamp_unix,
+        'prev_hash': prev_hash or '',
+    })
 
     # Save it
-    txn_ref = user_txn_ref.document(str(timestamp))
+    txn_ref = user_txn_ref.document(str(timestamp_unix))
     txn_ref.set(transaction_data)
 
-    return timestamp
+    return timestamp_dt
 
 def verify_transaction_chain(user_id):
     txn_ref = db.collection('transactions').document(user_id).collection('transaction_log')
@@ -44,21 +56,28 @@ def verify_transaction_chain(user_id):
     prev_hash = ''
     for txn in txns:
         data = txn.to_dict()
-        
+
         # Save the current hash and remove it temporarily to re-hash
         stored_hash = data['hash']
         data_copy = data.copy()
         del data_copy['hash']
-        
+
+        # Convert Firestore timestamp to Unix timestamp (int) if it's a datetime object
+        ts = data_copy['timestamp']
+        if isinstance(ts, datetime.datetime):  # Use datetime.datetime explicitly
+            data_copy['timestamp'] = int(ts.timestamp())
+        else:
+            data_copy['timestamp'] = int(ts)  # fallback if already int/str
+
         # Add expected prev_hash before rehashing
         data_copy['prev_hash'] = prev_hash
-        
+
         # Recalculate hash
         recalculated_hash = hash_transaction_data(data_copy)
-        
+
         if stored_hash != recalculated_hash:
             return {"valid": False, "message": f"Hash mismatch at timestamp {data['timestamp']}"}
-        
+
         prev_hash = stored_hash
 
     return {"valid": True, "message": "All transactions valid"}
