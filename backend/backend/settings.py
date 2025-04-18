@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'waqf',
     'corsheaders',
-    'analyser'
+    'analyser',
+    'ledger'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
