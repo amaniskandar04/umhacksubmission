@@ -1,8 +1,12 @@
 from PIL import Image
 import google.generativeai as genai
 import io
+from dotenv import load_dotenv
+import os
 
-YOUR_GEMINI_API_KEY = ""
+load_dotenv()
+
+YOUR_GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=YOUR_GEMINI_API_KEY)
 
 
