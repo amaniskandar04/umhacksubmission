@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/analyser/', include('analyser.urls')),  # Link to your analyser app
     path('api/waqf/', include('waqf.urls')),  # Link to your waqf app
+    path('api/ledger/', include('ledger.urls')),  # Link to your ledger app
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
