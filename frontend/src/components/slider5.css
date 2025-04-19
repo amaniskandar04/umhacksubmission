@@ -1,12 +1,12 @@
 .grid-container {
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
   margin-bottom: 40px;
 }
@@ -19,6 +19,7 @@
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .grid-card:hover {
@@ -32,16 +33,9 @@
   object-fit: cover;
 }
 
-.grid-description {
+.progress-container {
   padding: 0 16px;
-  margin: 8px 0;
-  font-size: 14px;
-  color: #555;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 12px 0;
 }
 
 .progress-bar {
@@ -49,7 +43,6 @@
   background-color: #eee;
   border-radius: 4px;
   overflow: hidden;
-  margin: 12px 16px 8px;
 }
 
 .progress-fill {
@@ -57,10 +50,10 @@
   background-color: #FEC265;
 }
 
-.smallText {
+.progress-text {
   font-size: 12px;
   color: #666;
-  margin: 0 16px 8px;
+  margin: 4px 0 0;
 }
 
 .grid-card h3 {
@@ -69,8 +62,16 @@
   color: #333;
 }
 
-.grid-card button {
-  background-color: #139D90;
+.grid-description {
+  padding: 0 16px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.view-button {
+  background-color: #2196F3;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -81,34 +82,8 @@
   transition: background-color 0.3s;
 }
 
-.grid-card button:hover {
-  background-color: #0d8a7a;
-}
-
-.load-more-text {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-  font-style: italic;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* For completed projects */
-.grid-card.completed {
-  opacity: 0.9;
-  border: 1px solid #e0e0e0;
+.view-button:hover {
+  background-color: #0b7dda;
 }
 
 .completed-badge {
@@ -120,17 +95,25 @@
   padding: 5px 10px;
   border-radius: 3px;
   font-size: 12px;
+  z-index: 1;
 }
 
-/* Button styles */
-.donate-button {
-  background: #FF5722;
-}
-
-.view-button {
-  background: #2196F3;
+.grid-card.completed {
+  opacity: 0.95;
 }
 
 .grid-card.completed .progress-fill {
   background: #4CAF50;
+}
+
+.loading, .end-message {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 }
