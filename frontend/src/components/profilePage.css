@@ -1,0 +1,342 @@
+/* Profile Header Container */
+.profile-header {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* Cover Image Styling */
+.cover-image {
+  width: 100%;
+  height: 250px;
+  background-color: #eee;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Change Cover Button */
+.change-cover {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #139D90;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.change-cover input {
+  display: none;
+}
+
+/* Profile Image Styling */
+
+.profile-content-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 0 24px;
+  margin-top: -60px;
+}
+
+
+
+.profile-image-wrapper {
+  position: relative;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+
+.change-profile {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #139D90;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transform: translate(25%, 25%);
+}
+
+.change-profile input {
+  display: none;
+}
+
+/* User Name Styling beside Profile Image */
+
+.profile-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-bottom: 72px;
+}
+
+.user-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-role {
+  font-size: 16px;
+  color: #666;
+  margin: 8px 0 0;
+}
+
+
+/* SubTab Styling */
+
+.subtab-container {
+  display: flex;
+  width: 1120px;
+  align-items: center; /* Center the items vertically */
+  margin: 0 auto;
+  border-bottom-width: 0;
+  border-bottom-color: rgb(199 201 204 / 1);
+  gap: 0;
+  height: 36px; /* Set height same as subtab button height */
+  padding: 0; /* Remove padding */
+}
+
+
+.subtabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+}
+
+.subtabs li {
+  display: flex;
+}
+
+.subtabs button {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  padding: 0 16px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+.subtabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #139D90;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+
+.subtabs li {
+  display: flex;
+  align-items: center;
+}
+
+/* Active tab styling */
+.subtabs button.active-subtab::after {
+  width: 100%;
+}
+
+
+.subtabs button:hover {
+  color: #139D90;
+}
+.subtab-item {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  border-bottom: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.subtab-item:hover {
+  border-bottom-color: rgb(199 201 204 / 1);
+}
+
+.subtab-item.active-subtab {
+  color: #139D90;
+  border-bottom: 2px solid #139D90;
+}
+
+/* Responsive */
+@media (min-width: 1120px) {
+  .subtab-container {
+    display: flex;
+  }
+}
+
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: absolute;
+}
+
+.subtab-wrapper {
+  margin-top: 72px !important; /* Enforce the 72px gap */
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  background-color: #F8F9FA;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0px 0;
+  clear: both; /* Ensure no conflict with profile image section */
+}
+
+/* Overview Boxes Styling */
+.overview-boxes-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.overview-box {
+  display: flex;
+  width: 298px;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+  gap: 24px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.overview-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* key addition here */
+  width: 100%;
+}
+
+.kebab-menu select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+}
+
+.overview-box-data {
+  font-size: 18px;
+  font-weight: 700;
+  color: #139D90;
+}
+
+.kebab-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.kebab-menu-options {
+  position: absolute;
+  top: 36px; /* distance below the icon */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  z-index: 10;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.kebab-menu-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.kebab-menu-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Section Header Styles */
+
+.section-header-wrapper {
+  width: 1120px;
+  margin: 72px auto 0 auto; /* 72px top margin, auto center horizontally */
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-header-title {
+  color: #000;
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  margin: 0; /* Remove default h2 margin */
+  display: flex;
+  align-items: center;
+}
+
+.section-header-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  display: block; /* removes baseline alignment issues */
+}
+
+/* Add these new styles */
+.slider-section-wrapper {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.slider-container-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Ensure slick slider styles are loaded */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";

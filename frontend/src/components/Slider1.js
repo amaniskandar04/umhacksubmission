@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "./Slider1.css"; // your own styles if needed
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
+import "./Slider1.css";
 
-const items = [
-  { id: 1, title: "Masjid Putra Expansion Project", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "The proposed expansion of Masjid Putra aims to increase its accommodation capacity from 15,000 to 25,000 individuals,  " },
-  { id: 2, title: "Sultan Sallahudin Idris Shah Mosque", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
-  { id: 3, title: "Tahfiz Abu Mujahhid", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
-  { id: 4, title: "Kelab Malam untuk Party", currentMoney: "0", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
-  
-];
+import axios from "axios";
+
+console.log("Slider1 component loaded");
 
 const CardSlider = () => {
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate(); // ✅ initialize navigate
+
+  useEffect(() => {
+    axios
+      .post("http://127.0.0.1:8000/api/waqf/RetrievedOngoingProject/")
+      .then((res) => {
+        setProjects(res.data.projects);
+      })
+      .catch((err) => {
+        console.error("Error fetching projects:", err);
+      });
+      
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 3 at a time
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
@@ -27,27 +39,39 @@ const CardSlider = () => {
     ],
   };
 
+  const handleDonateClick = (id) => {
+    navigate(`/projectpage/${id}`);
+  };
+
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {items.map((item) => (
+        {projects.map((item) => (
           <div key={item.id} className="slider-wrapper">
             <div className="slider-card">
-
-                <img src={item.imageUrl} alt={item.title} className="slider-image" />
-                <div className="progress-bar">
-                    <div
-                        className="progress-fill"
-                        style={{
-                        width: `${(item.currentMoney / item.totalNeeded) * 100}%`,
-                        }}
-                    ></div>
-                    
-                </div>
-                <p className = "smallText">RM {item.currentMoney} / {item.totalNeeded} collected!</p>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <button>Donate Now!</button>
+              <img
+                src={item.ProjectPicBanner}
+                alt={item.Title}
+                className="slider-image"
+              />
+              <div className="progress-bar">
+                <div
+                  className="progress-fill"
+                  style={{
+                    width: `${
+                      (parseFloat(item.CurrentAmount) /
+                        parseFloat(item.NeededAmount)) *
+                      100
+                    }%`,
+                  }}
+                ></div>
+              </div>
+              <p className="smallText">
+                RM {item.CurrentAmount} / {item.NeededAmount} collected!
+              </p>
+              <h3>{item.Title}</h3>
+              <p>{item.Description}</p>
+              <button onClick={() => handleDonateClick(item.id)}>Donate Now!</button>
             </div>
           </div>
         ))}
