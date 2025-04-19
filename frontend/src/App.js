@@ -14,6 +14,7 @@ import Projectpage from "./components/projectpage";
 import EditProject from "./components/editproject";
 import Navbar from "./components/Navbar"; // Navbar component for navigation
 
+
 const AppWrapper = () => {
   const location = useLocation();
   const hideNavbarRoutes = ["/login", "/register"]; // Add '/register' if you make one

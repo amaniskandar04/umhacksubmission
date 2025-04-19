@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import "./Slider1.css"; // your own styles if needed
+import { useNavigate } from "react-router-dom"; // ✅ import useNavigate
+import "./Slider1.css";
 
-import axios from 'axios';
+import axios from "axios";
 
 const CardSlider = () => {
   const [projects, setProjects] = useState([]);
+  const navigate = useNavigate(); // ✅ initialize navigate
 
   useEffect(() => {
     axios
-      .post('http://127.0.0.1:8000/api/waqf/RetrievedOngoingProject/')
+      .post("http://127.0.0.1:8000/api/waqf/RetrievedOngoingProject/")
       .then((res) => {
         setProjects(res.data.projects);
       })
@@ -32,6 +34,10 @@ const CardSlider = () => {
         },
       },
     ],
+  };
+
+  const handleDonateClick = (id) => {
+    navigate(`/projectpage/${id}`);
   };
 
   return (
@@ -62,7 +68,7 @@ const CardSlider = () => {
               </p>
               <h3>{item.Title}</h3>
               <p>{item.Description}</p>
-              <button>Donate Now!</button>
+              <button onClick={() => handleDonateClick(item.id)}>Donate Now!</button>
             </div>
           </div>
         ))}
