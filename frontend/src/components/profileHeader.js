@@ -1,10 +1,6 @@
 
-import React, { useState } from "react";
-import "./ProfilePage.css";
-import CardSlider from "./Slider1";
-import EmptyState from "./EmptyState";
-import { MoreHorizontal, Download } from "lucide-react";
-import CardGrid from "./slider4";
+import "./profilePage.css";
+import { Download } from "lucide-react";
 import Slider5 from "./slider5";
 import { Bar } from "react-chartjs-2";
 import {
@@ -17,6 +13,13 @@ import {
   Legend,
 } from "chart.js";
 
+import React, { useState } from 'react';
+import './profilePage.css';
+import CardSlider from './Slider1';
+import EmptyState from './EmptyState';
+import { MoreHorizontal } from 'lucide-react';
+import CardGrid from './slider4';
+
 // Register ChartJS components
 ChartJS.register(
   CategoryScale,
@@ -26,12 +29,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-import React, { useState } from 'react';
-import './profilePage.css';
-import CardSlider from './Slider1';
-import EmptyState from './EmptyState';
-import { MoreHorizontal } from 'lucide-react';
-import CardGrid from './slider4';
 
 const ProfileHeader = ({ activeTab, setActiveTab }) => {
   const [profileImage, setProfileImage] = useState(null);
@@ -187,7 +184,6 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
         <div className="profile-image-wrapper">
           <img
             src={profileImage || "https://via.placeholder.com/150"}
-            alt="Profile"
             className="profile-image"
           />
           <label className="change-profile">
