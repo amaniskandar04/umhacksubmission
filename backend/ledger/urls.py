@@ -6,4 +6,5 @@ urlpatterns = [
     path('verify/', views.verify_chain_view, name='verify_chain'),
     path('test-blockchain-transaction/', views.test_blockchain_transaction, name='test_blockchain_transaction'),
     path('test-chain/', views.test_blockchain_validation, name='test_blockchain_validation'),
+    path('test-email/', views.test_tamper_email, name='test_tamper_email'),
 ]

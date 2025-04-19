@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .firebase_utils import log_transaction, verify_transaction_chain
+from .firebase_utils import log_transaction, verify_transaction_chain, send_tamper_alert_email
 from backend.firebase import db
 from firebase_admin import firestore
 from rest_framework.decorators import api_view
@@ -48,6 +48,27 @@ def test_blockchain_transaction(request):
             "status": "failure",
             "error": str(e)
         })
+        
+def test_tamper_email(request):
+    # Simulated values for the alert
+    user_id = 'testuser123'
+    timestamp = '2025-04-18T14:00:00+08:00'
+    differences = {
+        "amount": {
+            "expected": 100,
+            "actual": 1000000
+        },
+        "type": {
+            "expected": "credit",
+            "actual": "debit"
+        }
+    }
+
+    try:
+        send_tamper_alert_email(user_id, timestamp, differences)
+        return JsonResponse({"status": "success", "message": "Email sent!"})
+    except Exception as e:
+        return JsonResponse({"status": "failure", "error": str(e)})
         
 @api_view(['GET'])
 def test_blockchain_validation(request):
