@@ -6,6 +6,7 @@ from firebase_admin import firestore
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+@api_view(['GET'])
 def log_transaction_view(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
@@ -20,6 +21,7 @@ def log_transaction_view(request):
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
+@api_view(['GET'])
 def verify_chain_view(request):
     user_id = request.GET.get('user_id')
     if not user_id:
@@ -28,6 +30,7 @@ def verify_chain_view(request):
     is_valid = verify_transaction_chain(user_id)
     return JsonResponse({'valid': is_valid})
 
+@api_view(['GET'])
 def test_blockchain_transaction(request):
     try:
         # Prepare the transaction data with all required fields
