@@ -26,7 +26,7 @@ const Home = () => {
             <CardSlider1 />
           </div>
       </div>
-      <div>
+      <div className ="about-us-block">
         <h2>About us</h2>
         <p>
         Easy2Wakaf is a modern, user-friendly platform designed to simplify the way you contribute to waqf. Our mission is to make giving effortless, fully trackable, and completely transparent. With Easy2Waqf, you can make your waqf payments in just a few clicks while easily monitoring where your contributions go and how they’re being used. We believe in building trust through clarity, ensuring every donor stays informed and connected to the causes they support
