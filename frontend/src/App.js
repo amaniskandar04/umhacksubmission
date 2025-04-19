@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import Home from './components/Home'; // Assuming you will create this component
 import Login from './components/login';
 import Register from './components/register'
+import AddProject from './components/addproject'
 import Projectpage from './components/projectpage'
 import Navbar from './components/Navbar'; // Navbar component for navigation
 
@@ -22,6 +23,8 @@ const AppWrapper = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/projectpage/:id" element={<Projectpage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/addproject" element={<AddProject />} />
+
       </Routes>
     </>
   );
