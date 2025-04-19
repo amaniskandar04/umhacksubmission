@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "./Slider1.css"; // your own styles if needed
+
 import axios from 'axios';
 
 const CardSlider = () => {
