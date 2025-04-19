@@ -29,7 +29,9 @@ const Projectpage = () => {
   }, [projectId]);
 
   const handleDonate = async () => {
-    const stripePromise = loadStripe("pk_test_51RFXeAPBTMj6yaMdFNX2HCvjAKppEcYq8Y6rN7A9fp5jYHwlBHrcmcu3Qx9hlhlPOc9UPE6oIfE57LJwNbqATZh000AhfaLpgv");
+    const stripePromise = loadStripe(
+      "pk_test_51RFXeAPBTMj6yaMdFNX2HCvjAKppEcYq8Y6rN7A9fp5jYHwlBHrcmcu3Qx9hlhlPOc9UPE6oIfE57LJwNbqATZh000AhfaLpgv"
+    );
     const stripe = await stripePromise;
 
     const amountNumber = parseFloat(donationAmount);
@@ -39,16 +41,19 @@ const Projectpage = () => {
       return;
     }
 
-    const response = await fetch("http://localhost:8000/api/waqf/create_checkout_session/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        amount: amountNumber,
-        projectId: projectId,
-        title: project.Title,
-        user_id: "kimi", // Replace with Firebase auth user ID
-      }),
-    });
+    const response = await fetch(
+      "http://localhost:8000/api/waqf/create_checkout_session/",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: amountNumber,
+          projectId: projectId,
+          title: project.Title,
+          user_id: "kimi", // Replace with Firebase auth user ID
+        }),
+      }
+    );
 
     const session = await response.json();
 
@@ -68,11 +73,33 @@ const Projectpage = () => {
     );
   }
 
+  const hardcodedGallery = [
+    {
+      imageUrl: "/images/surau.jpg",
+      alt: "Stage 1 - Groundwork",
+      description: "Initial groundwork and preparations for the site.",
+    },
+    {
+      imageUrl: "/images/tahfiz.jpg",
+      alt: "Stage 2 - Framework",
+      description: "Building the main structure and framework.",
+    },
+    {
+      imageUrl: "/images/masjid.jpg",
+      alt: "Stage 3 - Finishing",
+      description: "Interior works and final touches.",
+    },
+  ];
+
   return (
     <>
       {/* Banner */}
       <div className="banner">
-        <img src={project.ProjectPicBanner} alt="Banner" className="banner-image" />
+        <img
+          src={project.ProjectPicBanner}
+          alt="Banner"
+          className="banner-image"
+        />
         <div className="image-gradient"></div>
         <div className="image-overlay">
           <h1>{project.Title}</h1>
@@ -90,30 +117,28 @@ const Projectpage = () => {
         </div>
       </div>
 
-      <div className="progress-bar">
+      <div className="progress-bar-project-page">
         <div
-                  className="progress-fill"
-                  style={{
-                    width: `${
-                      (parseFloat(project.CurrentAmount) /
-                        parseFloat(project.NeededAmount)) *
-                      100
-                    }%`,
-                  }}
+          className="progress-fill"
+          style={{
+            width: `${
+              (parseFloat(project.CurrentAmount) /
+                parseFloat(project.NeededAmount)) *
+              100
+            }%`,
+          }}
         ></div>
       </div>
 
-      <p className="smallText">
+      <p className="smallTextProjectPage">
         RM {project.CurrentAmount} / {project.NeededAmount} collected!
       </p>
 
       {/* Timeline */}
-      <div className="max-w-6xl mx-auto">
-        <h2 className="project-text">Project Progress</h2>
+      <div className="timeline-box">
+        <h2>Project Progress</h2>
         <Timeline currentStep={parseInt(project.ProjectTimelineState)} />
       </div>
-
-      
 
       {/* Project Info */}
       <div className="project-container">
@@ -121,11 +146,17 @@ const Projectpage = () => {
           <h2>{project.Title}</h2>
           <p>{project.Description}</p>
         </div>
-        <img src={project.ProjectPicBanner} alt={project.Title} className="project-image" />
+        <img
+          src={project.ProjectPicBanner}
+          alt={project.Title}
+          className="project-image"
+        />
       </div>
 
       {/* Gallery */}
-      <h2 className="project-progression-gallery">Project Progression Gallery</h2>
+      <h2 className="project-progression-gallery">
+        Project Progression Gallery
+      </h2>
       <div className="gallery">
         {project.ProjectPicDetails.map((item, index) => (
           <div
@@ -133,13 +164,19 @@ const Projectpage = () => {
             className={`gallery-item ${activeIndex === index ? "active" : ""}`}
             onClick={() => toggleActive(index)}
           >
-            <img src={item.imageUrl} alt={item.alt} />
+
+            <img src={item} alt={`Project Detail ${index + 1}`} />
             <div className="gallery-text">
-              <p>{item.description}</p>
+              <p>Great Builds are ahead! So Epic!</p>
+
             </div>
           </div>
         ))}
       </div>
+
+
+      
+      
     </>
   );
 };

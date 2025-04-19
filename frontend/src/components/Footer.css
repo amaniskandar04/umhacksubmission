@@ -1,0 +1,74 @@
+/* Footer container */
+.footer-container {
+    background-color: #139D90;
+    padding: 20px 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* Footer content - Flex container */
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  /* Footer columns */
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f4f4f4;
+  }
+  
+  .footer-description {
+    font-size: 1.2rem;
+    color: #f4f4f4;
+    line-height: 1.6;
+  }
+  
+  .footer-nav {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-nav li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-nav a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-nav a:hover {
+    color: #ff6f61; /* Change this to your desired hover color */
+  }
+  
+  /* For smaller screens, adjust the grid layout */
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+  }
+  
+  /* For mobile devices */
+  @media (max-width: 480px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+  

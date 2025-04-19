@@ -30,7 +30,7 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 |--------------|---------|
 | **Django**   | Backend API & Admin Panel |
 | **React**    | Frontend SPA for donors and admins |
-| **MongoDB**  | NoSQL DB for high-scalability & flexibility |
+| **Firebase**  | Cloud-hosted NoSQL database for real-time data sync |
 | **Stripe**   | Secure online payment gateway |
 | **WeasyPrint** | PDF generation for donation receipts |
 | **OpenCV**   | Identity/document verification |
@@ -78,7 +78,7 @@ We worked closely with guidelines from Jabatan Wakaf, Zakat dan Haji (JAWHAR) to
 
 ## 🧑‍💻 Team
 - **Team Name:** [That One Time When Me And Bros Decided To Join Hackathon And We Actually Win]
-- **Members:** [Aman Iskandar], [Hakimi Mahadzir], [Maxwell Jared], [Jawwad Kabir], [Amir Izzhan]
+- **Members:** [Aman Iskandar], [Hakimi Mahadzir], [Maxwell Jared], [Jawwad Kabir], [Amir Izzan]
 - **Institution:** University of Malaya
 
 ---
@@ -96,7 +96,7 @@ We worked closely with guidelines from Jabatan Wakaf, Zakat dan Haji (JAWHAR) to
 📧 [Jawwad Kabir]  
 🔗 [Linkedin](https://www.linkedin.com/in/jawwad-kabir/)
 
-📧 [Amir Izzhan]  
+📧 [Amir Izzan]  
 🔗 [Email](mamirizzan04@gmail.com)
 
 ---

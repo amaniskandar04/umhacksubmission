@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./ProfilePage.css";
 import CardSlider from "./Slider1";
@@ -25,6 +26,12 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import React, { useState } from 'react';
+import './profilePage.css';
+import CardSlider from './Slider1';
+import EmptyState from './EmptyState';
+import { MoreHorizontal } from 'lucide-react';
+import CardGrid from './slider4';
 
 const ProfileHeader = ({ activeTab, setActiveTab }) => {
   const [profileImage, setProfileImage] = useState(null);
