@@ -1,6 +1,23 @@
 nav {
-  padding: 10px 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3px;
   background-color: transparent; /* Optional: add background if needed */
+  top: 0;
+  position: fixed; /* Sticks to the top */
+  width: 90%;
+  z-index: 1000; /* Make sure it's above other content */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.transparent {
+  background-color: transparent;
+  
+}
+
+nav.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
@@ -51,6 +68,16 @@ nav {
   background-color: transparent;
   color: #FEC265;
   border: 1px solid #FEC265;
+}
+
+
+
+nav.scrolled .btnRegister {
+  background-color: transparent;
+}
+
+nav.scrolled a {
+  color: #139D90;
 }
 
   

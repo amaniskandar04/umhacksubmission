@@ -6,3 +6,69 @@ h2{
     margin-top: 50px;
     margin-left: 5%;
 }
+
+.banner {
+    width: 100%;
+    height:800px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* ensures center of image is shown */
+  }
+
+  /* Gradient to darken bottom of the image */
+ .image-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+  }
+
+  
+.image-overlay {
+    position: absolute;
+    top: 50%; 
+    left: 40px;
+    transform: translateY(-50%); 
+    text-align: left;
+    color: white;
+    z-index: 2;
+    
+  }
+  
+  .image-overlay h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    
+  }
+  
+  .image-overlay p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    max-width: 400px;
+  }
+  
+  .image-overlay button {
+    background-color: #139D90;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 5%;
+  }
+  
+  .image-overlay button:hover {
+    background-color: #0d786d;
+  }
