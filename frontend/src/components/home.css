@@ -1,10 +1,7 @@
-h1{
-    margin-left: 5%;
-}
 
 h2{
     margin-top: 50px;
-    margin-left: 5%;
+    
 }
 
 .banner {
@@ -36,7 +33,7 @@ h2{
 .image-overlay {
     position: absolute;
     top: 50%; 
-    left: 40px;
+    margin-left: 5%;
     transform: translateY(-50%); 
     text-align: left;
     color: white;
@@ -66,7 +63,7 @@ h2{
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: 5%;
+    
   }
   
   .image-overlay button:hover {

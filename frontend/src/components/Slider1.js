@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./Slider1.css"; // your own styles if needed
 
 const items = [
-  { id: 1, title: "Masjid Putra Expansion Project", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "The proposed expansion of Masjid Putra aims to increase its accommodation capacity from 15,000 to 25,000 individuals,  " },
+  { id: 68, title: "Masjid Putra Expansion Project", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "The proposed expansion of Masjid Putra is a significant and visionary project aimed at enhancing the mosque's ability to accommodate a growing congregation. Currently capable of hosting 15,000 individuals, the mosque's expansion seeks to increase this capacity to 25,000, ensuring that it can serve the needs of the community, especially during peak times such as Ramadan and major religious events." },
   { id: 2, title: "Sultan Sallahudin Idris Shah Mosque", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
   { id: 3, title: "Tahfiz Abu Mujahhid", currentMoney: "100000", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
   { id: 4, title: "Kelab Malam untuk Party", currentMoney: "0", totalNeeded: "500000", imageUrl:"images/masjid.jpg", description: "kau memang hensem" },
