@@ -122,13 +122,13 @@
   }
   
   .image-overlay h1 {
-    margin-bottom: 10px;
-    font-size: 2.5rem;
+    margin-bottom: 0px;
+    font-size: 4rem;
     
   }
   
   .image-overlay p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     max-width: 400px;

@@ -42,13 +42,13 @@ h2{
   }
   
   .image-overlay h1 {
-    margin-bottom: 10px;
-    font-size: 2.5rem;
+    margin-bottom: 0px;
+    font-size: 4rem;
     
   }
   
   .image-overlay p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     max-width: 400px;
@@ -70,7 +70,57 @@ h2{
     background-color: #0d786d;
   }
 
-  .about-us-block{
+  .about-us-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-left: 5%;
-    
+    margin-right: 5%;
+    margin-top: 200px;
+    gap: 40px;
+  }
+  
+  .about-us-block {
+    flex: 1;
+    padding-right: 50px;
+  }
+
+  .about-us-block h2{
+    margin-top:20px;
+  }
+  
+  .about-us-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 30px;
+  }
+  
+  .about-us-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-us-block button {
+    background-color: #139D90;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 15px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .about-us-block button:hover {
+    background-color: #0f7e75;
+  }
+  
+
+  .ongoing-projects-container h2{
+    margin-left: 5%;
+    margin-bottom: 20px;
   }
