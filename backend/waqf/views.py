@@ -256,4 +256,3 @@ def UploadProject(request):
         "message": "Project uploaded successfully!",
         "projectId": new_project_ref.id
     })
-
