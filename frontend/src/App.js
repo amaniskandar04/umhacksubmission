@@ -6,7 +6,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import Home from "./components/Home"; // Assuming you will create this component
+import Home from "./components/Home"; // Assuming you will create this compogitnent
 import Login from "./components/login";
 import Register from "./components/register";
 import AddProject from "./components/addproject";

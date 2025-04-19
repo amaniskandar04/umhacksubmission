@@ -14,29 +14,17 @@ const Timeline = ({ currentStep }) => {
   ];
 
   return (
-    <div className="flex items-center justify-between gap-4 py-10 overflow-x-auto">
+    <div className="timeline-wrapper">
       {status.map((step, index) => {
         const isActive = index <= currentStep;
-        const isLast = index === status.length - 1;
-
         return (
-          <div key={index} className="flex items-center gap-2">
-            {/* Circle with icon */}
+          <div key={index} className="timeline-step">
             <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold
-                ${isActive ? "bg-emerald-500 text-white" : "bg-gray-300 text-gray-600"}
-              `}
+              className={`timeline-circle ${isActive ? "active" : ""}`}
             >
               {step.icon}
             </div>
-
-            {/* Label */}
-            <p className="text-sm text-center">{step.label}</p>
-
-            {/* Connector */}
-            {!isLast && (
-              <div className={`w-10 h-1 ${index < currentStep ? "bg-emerald-500" : "bg-gray-300"}`} />
-            )}
+            <p className="timeline-label">{step.label}</p>
           </div>
         );
       })}
