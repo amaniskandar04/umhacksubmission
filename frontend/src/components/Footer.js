@@ -1,59 +1,70 @@
-import React from "react";
+import React from 'react';
+import { Instagram, Twitter } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer-container">
-      <div className="footer-content">
-        <div className="footer-column">
-          <h3 className="footer-title">Easy2Wakaf</h3>
-          <p className="footer-description">Empowering Communities through Waqf</p>
-        </div>
+    <footer className="footer">
+      <div className="footer-container">
+        {/* Main Footer Content */}
+        <div className="footer-content">
+          {/* Brand Column */}
+          <div className="footer-brand">
+            <h2 className="brand-title">Easy2Wakaf</h2>
+          </div>
 
-        <div className="footer-column">
-          <h3 className="footer-title">Site</h3>
-          <ul className="footer-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-          </ul>
-        </div>
+          {/* Site Links */}
+          <div className="footer-column">
+            <h3 className="column-title">Site</h3>
+            <ul className="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Project</a></li>
+              <li><a href="#">Blogs</a></li>
+            </ul>
+          </div>
 
-        <div className="footer-column">
-          <h3 className="footer-title">Company</h3>
-          <ul className="footer-nav">
-            <li><a href="/about-us">About Us</a></li>
-            <li><a href="/team">Our Team</a></li>
-            <li><a href="/style-guide">Style Guide</a></li>
-          </ul>
-        </div>
+          {/* Company Links */}
+          <div className="footer-column">
+            <h3 className="column-title">Company</h3>
+            <ul className="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Style guide</a></li>
+            </ul>
+          </div>
 
-        <div className="footer-column">
-          <h3 className="footer-title">Our Projects</h3>
-          <ul className="footer-nav">
-            <li><a href="/projects">Latest Projects</a></li>
-            <li><a href="/donations">Donate</a></li>
-            <li><a href="/fundraising">Fundraising</a></li>
-          </ul>
+          {/* Projects and Legal Combined */}
+          <div className="footer-double-column">
+            <div className="footer-sub-column">
+              <h3 className="column-title">Our Projects</h3>
+              <ul className="footer-links">
+                <li><a href="#">Kuala Lumpur</a></li>
+                <li><a href="#">Kedah</a></li>
+                <li><a href="#">Selangor</a></li>
+                <li><a href="#">Completed Projectes</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-sub-column">
+              <h3 className="column-title">Legal</h3>
+              <ul className="footer-links">
+                <li><a href="#">Privacy policy</a></li>
+                <li><a href="#">Terms of services</a></li>
+              </ul>
+              
+              <h3 className="column-title social-title">Socials</h3>
+              <div className="social-icons">
+                <a href="#"><Instagram size={20} /></a>
+                <a href="#"><Twitter size={20} /></a>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="footer-column">
-          <h3 className="footer-title">Resources</h3>
-          <ul className="footer-nav">
-            <li><a href="/terms">Terms of Service</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/faq">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-column">
-          <h3 className="footer-title">Contact</h3>
-          <ul className="footer-nav">
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/support">Support</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-          </ul>
+        
+        {/* Copyright */}
+        <div className="copyright">
+          Easy2Wakaf Inc 2024 - All rights reserved
         </div>
       </div>
     </footer>
