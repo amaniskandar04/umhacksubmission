@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import './addproject.css';
+import React, { useState } from "react";
+import "./addproject.css";
 
 const AddProject = () => {
-    const [projectImages, setProjectImages] = useState([]);
+  const [projectImages, setProjectImages] = useState([]);
 
-    const handleImageUpload = (e) => {
+  const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     setProjectImages(files);
     console.log("Uploaded files:", files);
-    };
-
-
+  };
 
   return (
     <div className="addproject-container">
@@ -31,10 +29,17 @@ const AddProject = () => {
 
           <label className="file-label">
             Upload Project Pictures:
-            <input type="file" multiple accept="image/*" onChange={handleImageUpload} />
-            </label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+          </label>
 
-          <button type="submit" className="submit-button">Submit Project</button>
+          <button type="submit" className="submit-button">
+            Submit Project
+          </button>
         </form>
       </div>
 
