@@ -340,3 +340,10 @@
 /* Ensure slick slider styles are loaded */
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+
+/* Empty State Styles */
+.empty-state-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}

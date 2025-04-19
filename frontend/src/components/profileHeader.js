@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './ProfilePage.css';
 import CardSlider from './Slider1';
+import EmptyState from './EmptyState';
 import { MoreHorizontal } from 'lucide-react';
+import CardGrid from './slider4';
 
 const ProfileHeader = ({ activeTab, setActiveTab }) => {
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
+  const [hasCreatedProjects, setHasCreatedProjects] = useState(false);
 
   const [boxes, setBoxes] = useState([
     { title: 'Project Donated To', data: '12' },
@@ -24,11 +27,15 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
   ];
 
   const handleProfileImageChange = (e) => {
-    setProfileImage(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files && e.target.files[0]) {
+      setProfileImage(URL.createObjectURL(e.target.files[0]));
+    }
   };
 
   const handleCoverImageChange = (e) => {
-    setCoverImage(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files && e.target.files[0]) {
+      setCoverImage(URL.createObjectURL(e.target.files[0]));
+    }
   };
 
   const handleCategoryChange = (index, newTitle) => {
@@ -49,9 +56,7 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
       <div
         className="cover-image"
         style={{
-          backgroundImage: `url(${
-            coverImage || "https://via.placeholder.com/1120x250"
-          })`,
+          backgroundImage: `url(${coverImage || "https://via.placeholder.com/1120x250"})`,
         }}
       >
         <label className="change-cover">
@@ -92,12 +97,10 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
       <div className="subtab-wrapper">
         <div className="subtab-container">
           <ul className="subtabs">
-            {["Overview", "Activity", "Settings"].map((tab) => (
+            {["Overview", "Project Donated", "Project Created", "Total Amount Collected", "Total Amount Donated"].map((tab) => (
               <li key={tab}>
                 <button
-                  className={`subtab-item ${
-                    activeTab === tab ? "active-subtab" : ""
-                  }`}
+                  className={`subtab-item ${activeTab === tab ? "active-subtab" : ""}`}
                   onClick={() => setActiveTab(tab)}
                 >
                   {tab}
@@ -144,6 +147,7 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
       {/* Section Header below the overview boxes */}
       {activeTab === "Overview" && (
         <div className="slider-section-wrapper">
+          {/* Recently Donated Section */}
           <div className="section-header-wrapper">
             <div className="section-header">
               <img
@@ -157,6 +161,59 @@ const ProfileHeader = ({ activeTab, setActiveTab }) => {
           <div className="slider-container-wrapper">
             <CardSlider />
           </div>
+
+          {/* Recently Created Projects Section */}
+          <div className="section-header-wrapper">
+            <div className="section-header">
+              <img
+                src="fire.svg"
+                alt="Icon"
+                className="section-header-icon"
+              />
+              <h2 className="section-header-title">Recently Created Projects</h2>
+            </div>
+          </div>
+          
+          {/* Conditional Empty State */}
+          <div className="empty-state-wrapper">
+            {hasCreatedProjects ? (
+              <CardSlider />
+            ) : (
+              <EmptyState />
+            )}
+          </div>
+        </div>
+      )}
+
+{activeTab === "Project Donated" && (
+        <div className="slider-section-wrapper">
+          {/* Recently Donated Section */}
+          <div className="section-header-wrapper">
+            <div className="section-header">
+              <img
+                src="code-of-conduct.svg"
+                alt="Icon"
+                className="section-header-icon"
+              />
+              <h2 className="section-header-title">Recently Donated</h2>
+            </div>
+          </div>
+          <div className="slider-container-wrapper">
+            <CardSlider />
+          </div>
+
+          <div className="section-header-wrapper">
+            <div className="section-header">
+              <img
+                src="hourglass.svg"
+                alt="Icon"
+                className="section-header-icon"
+              />
+              <h2 className="section-header-title">Previous Donations</h2>
+            </div>
+          </div>
+          <CardGrid />
+          
         </div>
       )}
     </div>
