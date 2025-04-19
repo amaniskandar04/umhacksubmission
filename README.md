@@ -43,7 +43,7 @@ While Waqf remains a powerful pillar of Islamic social finance, its potential is
 ## 🔗 Design & Prototypes
 
 - 🎨 [Figma UI/UX Design](https://www.figma.com/design/DToBf1JwaQ5XdFyBHxLWSL/Easy2Waqf?node-id=0-1&p=f&t=WAbUJijSyXRBF7KA-0)
-- 📊 [Canva Pitch Deck](./UMHackSlide.pdf)
+- 📊 [Canva Pitch Deck](./Easy2WaqfPitchDeck.pdf)
 
 ---
 
