@@ -153,3 +153,31 @@
   .project-progression-gallery{
     margin-left: 5%;
   }
+
+  .timeline-section {
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .timeline-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .donation-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .donation-input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 200px;
+  }
+  

@@ -24,4 +24,7 @@ urlpatterns = [
     path('RetrievedPreviousProject/', views.RetrievedPreviousProject, name='RetrievedPreviousProject'),
     #Return confirmation message
     path('UploadProject/', views.UploadProject, name='UploadProject'),
+    
+     #Return payment message
+    path('create_checkout_session/', views.create_checkout_session, name='create_checkout_session'),
 ]

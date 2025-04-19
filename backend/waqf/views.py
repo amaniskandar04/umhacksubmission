@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework.decorators import permission_classes
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from backend.firebase import db
 from firebase_admin import auth, firestore
 from . import firebaseauth # This ensures Firebase is initialized
 from .firebaseauth import firebase_auth_required
 from datetime import datetime
+import stripe
+from django.conf import settings
 
+stripe.api_key = "sk_test_51RFXeAPBTMj6yaMdhT6VrQUCbGKkIx7QoxPTYXxXbStQWwgWcg4qVSY26rVsu9jh43Y02n2ltxpfa9eZqUeSK9TK00fEocjhZ0"  # replace with your actual secret key
 
 #PublicDataRetrieved 
 @api_view(['POST'])
@@ -256,3 +262,45 @@ def UploadProject(request):
         "message": "Project uploaded successfully!",
         "projectId": new_project_ref.id
     })
+
+
+@csrf_exempt
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def create_checkout_session(request):
+    try:
+        data = request.data
+        amount = int(float(data.get("amount", 0)) * 100)  # convert to cents
+        title = data.get("title", "Waqf Project")
+        project_id = data.get("projectId", "unknown")
+        user_id = data.get("user_id", "uid")
+
+        if amount < 100:
+            return JsonResponse({"error": "Minimum donation is $1"}, status=400)
+
+        session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "myr",
+                        "product_data": {
+                            "name": title,
+                        },
+                        "unit_amount": amount,
+                    },
+                    "quantity": 1,
+                }
+            ],
+            mode="payment",
+            success_url=f"http://localhost:3000/donation-success?amount={amount}&user_id={user_id}",
+            cancel_url="http://localhost:3000/",
+            metadata={
+                "project_id": project_id
+            }
+        )
+
+        return JsonResponse({"id": session.id})
+    
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
