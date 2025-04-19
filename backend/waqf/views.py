@@ -11,9 +11,13 @@ from . import firebaseauth # This ensures Firebase is initialized
 from .firebaseauth import firebase_auth_required
 from datetime import datetime
 import stripe
+import os
 from django.conf import settings
+from dotenv import load_dotenv
 
-stripe.api_key = "sk_test_51RFXeAPBTMj6yaMdhT6VrQUCbGKkIx7QoxPTYXxXbStQWwgWcg4qVSY26rVsu9jh43Y02n2ltxpfa9eZqUeSK9TK00fEocjhZ0"  # replace with your actual secret key
+load_dotenv()
+
+stripe.api_key = os.getenv('STRIPE_API_KEY_PRIVATE')  # replace with your actual secret key
 
 #PublicDataRetrieved 
 @api_view(['POST'])
