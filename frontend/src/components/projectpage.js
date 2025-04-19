@@ -3,10 +3,10 @@ import Timeline from "./Timeline"; // adjust path if it's in a different folder
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import "./projectpage.css";
+import { useParams } from "react-router-dom"
 
-
-
-const Projectpage = ({ projectId }) => {
+const Projectpage = () => {
+  const { id: projectId } = useParams();
   const [project, setProject] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [donationAmount, setDonationAmount] = useState("");
@@ -18,7 +18,7 @@ const Projectpage = ({ projectId }) => {
   useEffect(() => {
     axios
       .post("http://localhost:8000/api/waqf/RetrievedFullProjectDetails/", {
-        project_id: "BB9uPs5kigT6G4N038dj",
+        project_id: projectId,
       })
       .then((res) => {
         const data = res.data.project;
