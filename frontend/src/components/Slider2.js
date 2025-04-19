@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import "./Slider2.css"; // your own styles if needed
+import './Slider2.css';
 
 const items = [
   { id: 1, title: "Mosques", image: "images/masjid.jpg" },
