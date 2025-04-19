@@ -5,7 +5,7 @@ import "./Slider1.css";
 
 import axios from "axios";
 
-const CardSlider = () => {
+const CardSlider1 = () => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate(); // ✅ initialize navigate
 
@@ -77,4 +77,4 @@ const CardSlider = () => {
   );
 };
 
-export default CardSlider;
+export default CardSlider1;

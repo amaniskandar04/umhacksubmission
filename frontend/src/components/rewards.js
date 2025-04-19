@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import './rewards.css';
 
 const rewards = [
-  { id: 1, label: "Starbucks RM10", points: 200, image: "/images/starbucks.png" },
+  { id: 1, label: "Zus RM10 Voucher", points: 200, image: "/images/zus.png" },
   { id: 2, label: "Touch 'n Go RM5", points: 100, image: "/images/tng.png" },
-  { id: 3, label: "Eco Bag", points: 50, image: "/images/ecobag.png" },
-  { id: 4, label: "Keychain", points: 30, image: "/images/keychain.png" },
-  { id: 5, label: "Notebook", points: 70, image: "/images/notebook.png" },
-  { id: 6, label: "Water Bottle", points: 120, image: "/images/bottle.png" }
+  { id: 3, label: "Grab Voucher", points: 50, image: "/images/grab.png" },
+  { id: 4, label: "Kubur", points: 30000, image: "/images/kubur.jpg" },
+  { id: 5, label: "Al Quran", points: 70, image: "/images/alquran.png" },
+  { id: 6, label: "Security Commission Water Bottle", points: 120, image: "/images/bottle.jpg" }
 ];
 
 const RewardsPage = () => {
