@@ -39,7 +39,7 @@ const Home = () => {
           </div>
         </div>
 
-      <div>
+      <div className = "completed-projects-container">
         <h2>Completed Projects</h2>
         <CardSlider2 />
       </div>
