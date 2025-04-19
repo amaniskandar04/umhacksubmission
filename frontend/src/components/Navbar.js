@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link to="/about">About</Link>
           <Link to="/addproject">Add Project</Link>
           <Link to="/rewards">Rewards</Link>
-          <Link to="/rewards">Rewards</Link>
+          
         </div>
         <div className="navbar-right">
         <button className="btnLogin" onClick={() => navigate('/login')}>
