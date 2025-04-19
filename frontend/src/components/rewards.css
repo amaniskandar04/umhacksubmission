@@ -1,0 +1,41 @@
+.rewards-page {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .rewards-page h2 {
+    margin-bottom: 40px;
+  }
+  
+  .rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+  
+  .reward-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  
+  .reward-img {
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  .reward-card button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .reward-card button:hover {
+    background-color: #00a1b2;
+  }
