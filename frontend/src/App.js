@@ -28,21 +28,23 @@ const AppWrapper = () => {
   return (
     <div className="App">
       {!shouldHideNavbar && <Navbar />}
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/projectpage/:id" element={<Projectpage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/addproject" element={<AddProject />} />
-        <Route path="/editproject" element={<EditProject />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/rewards" element={<RewardsPage/>} />
-        <Route path='/donation' element={<DonationSuccess/>} />
-      </Routes>
-    </>
-
+      <div className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/projectpage/:id" element={<Projectpage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/addproject" element={<AddProject />} />
+          <Route path="/editproject" element={<EditProject />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/rewards" element={<RewardsPage />} />
+          <Route path="/donation-success" element={<DonationSuccess />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+      <Footer /> {/* Footer added here */}
+    </div>
   );
 };
 
