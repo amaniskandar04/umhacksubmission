@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './rewards.css';
 
 const rewards = [
@@ -11,16 +11,16 @@ const rewards = [
 ];
 
 const RewardsPage = () => {
-  const userPoints = 250; // Replace with dynamic value if needed
-
-  const handleRedeem = (reward) => {
-    if (userPoints >= reward.points) {
-      alert(`You redeemed: ${reward.label}`);
-      // TODO: Deduct points, update database, etc.
-    } else {
-      alert("Not enough points!");
-    }
-  };
+    const [userPoints, setUserPoints] = useState(250); // dynamic state
+  
+    const handleRedeem = (reward) => {
+      if (userPoints >= reward.points) {
+        alert(`You redeemed: ${reward.label}`);
+        setUserPoints(prev => prev - reward.points); // deduct points
+      } else {
+        alert("Not enough points!");
+      }
+    };
 
   return (
     <div className="rewards-page">

@@ -13,6 +13,7 @@ import AddProject from "./components/addproject";
 import Projectpage from "./components/projectpage";
 import EditProject from "./components/editproject";
 import DonationSuccess from "./components/donation-success";
+import RewardsPage from "./components/rewards";
 import Navbar from "./components/Navbar"; // Navbar component for navigation
 
 const AppWrapper = () => {
@@ -31,6 +32,7 @@ const AppWrapper = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/addproject" element={<AddProject />} />
         <Route path="/editproject" element={<EditProject />} />
+        <Route path="/rewards" element={<RewardsPage/>} />
       </Routes>
     </>
   );
