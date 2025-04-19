@@ -21,6 +21,7 @@ const Navbar = () => {
         <div className="navbar-left">
           <h3>Easy2Wakaf</h3>
           <Link to="/">Home</Link>
+          <Link to="/profile">Profile</Link>
           <Link to="/about">About</Link>
           <Link to="/addproject">Add Project</Link>
           <Link to="/rewards">Rewards</Link>
