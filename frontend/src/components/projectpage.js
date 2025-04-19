@@ -73,6 +73,24 @@ const Projectpage = () => {
     );
   }
 
+  const hardcodedGallery = [
+    {
+      imageUrl: "/images/surau.jpg",
+      alt: "Stage 1 - Groundwork",
+      description: "Initial groundwork and preparations for the site.",
+    },
+    {
+      imageUrl: "/images/tahfiz.jpg",
+      alt: "Stage 2 - Framework",
+      description: "Building the main structure and framework.",
+    },
+    {
+      imageUrl: "/images/masjid.jpg",
+      alt: "Stage 3 - Finishing",
+      description: "Interior works and final touches.",
+    },
+  ];
+
   return (
     <>
       {/* Banner */}
@@ -99,7 +117,7 @@ const Projectpage = () => {
         </div>
       </div>
 
-      <div className="progress-bar">
+      <div className="progress-bar-project-page">
         <div
           className="progress-fill"
           style={{
@@ -112,13 +130,13 @@ const Projectpage = () => {
         ></div>
       </div>
 
-      <p className="smallText">
+      <p className="smallTextProjectPage">
         RM {project.CurrentAmount} / {project.NeededAmount} collected!
       </p>
 
       {/* Timeline */}
-      <div className="max-w-6xl mx-auto">
-        <h2 className="project-text">Project Progress</h2>
+      <div className="timeline-box">
+        <h2>Project Progress</h2>
         <Timeline currentStep={parseInt(project.ProjectTimelineState)} />
       </div>
 
@@ -146,13 +164,19 @@ const Projectpage = () => {
             className={`gallery-item ${activeIndex === index ? "active" : ""}`}
             onClick={() => toggleActive(index)}
           >
-            <img src={item} alt={`Project detail ${index + 1}`} />
+
+            <img src={item} alt={`Project Detail ${index + 1}`} />
             <div className="gallery-text">
-              <p>Photo {index + 1}</p>
+              <p>Great Builds are ahead! So Epic!</p>
+
             </div>
           </div>
         ))}
       </div>
+
+
+      
+      
     </>
   );
 };
