@@ -4,9 +4,9 @@ import './Slider2.css';
 
 const items = [
   { id: 1, title: "Mosques", image: "images/masjid.jpg" },
-  { id: 2, title: "Surau", image: "images/masjid.jpg" },
-  { id: 3, title: "School", image: "images/masjid.jpg" },
-  { id: 4, title: "Others", image: "images/masjid.jpg" }
+  { id: 2, title: "Surau", image: "images/surau.jpg" },
+  { id: 3, title: "School", image: "images/tahfiz.jpg" },
+  { id: 4, title: "Others", image: "images/library.jpg" }
 ];
 
 const CardSlider = () => {
@@ -35,7 +35,7 @@ const CardSlider = () => {
           >
             <div className="slider-overlay">
               <h3>{item.title}</h3>
-              <button>Donate Now!</button>
+              <button>View</button>
             </div>
           </div>
         </div>

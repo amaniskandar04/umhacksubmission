@@ -68,6 +68,24 @@ const Projectpage = () => {
     );
   }
 
+  const hardcodedGallery = [
+    {
+      imageUrl: "/images/surau.jpg",
+      alt: "Stage 1 - Groundwork",
+      description: "Initial groundwork and preparations for the site.",
+    },
+    {
+      imageUrl: "/images/tahfiz.jpg",
+      alt: "Stage 2 - Framework",
+      description: "Building the main structure and framework.",
+    },
+    {
+      imageUrl: "/images/masjid.jpg",
+      alt: "Stage 3 - Finishing",
+      description: "Interior works and final touches.",
+    },
+  ];
+
   return (
     <>
       {/* Banner */}
@@ -90,7 +108,7 @@ const Projectpage = () => {
         </div>
       </div>
 
-      <div className="progress-bar">
+      <div className="progress-bar-project-page">
         <div
                   className="progress-fill"
                   style={{
@@ -125,7 +143,7 @@ const Projectpage = () => {
       </div>
 
       {/* Gallery */}
-      <h2 className="project-progression-gallery">Project Progression Gallery</h2>
+      {/*<h2 className="project-progression-gallery">Project Progression Gallery</h2>
       <div className="gallery">
         {project.ProjectPicDetails.map((item, index) => (
           <div
@@ -139,7 +157,26 @@ const Projectpage = () => {
             </div>
           </div>
         ))}
+      </div>*/}
+
+      <h2 className="project-progression-gallery">Project Progression Gallery</h2>
+      <div className="gallery">
+          {/* Replaced dynamic project.ProjectPicDetails with hardcodedGallery */}
+          {hardcodedGallery.map((item, index) => (
+            <div
+              key={index}
+              className={`gallery-item ${activeIndex === index ? "active" : ""}`}
+              onClick={() => toggleActive(index)}
+            >
+              <img src={item.imageUrl} alt={item.alt} />
+              <div className="gallery-text">
+                <p>{item.description}</p>
+              </div>
+            </div>
+          ))}
       </div>
+      
+      
     </>
   );
 };

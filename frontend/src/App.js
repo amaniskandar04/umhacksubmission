@@ -35,6 +35,7 @@ const AppWrapper = () => {
         <Route path="/editproject" element={<EditProject />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/rewards" element={<RewardsPage/>} />
+        <Route path='/donation' element={<DonationSuccess/>} />
       </Routes>
     </>
   );
