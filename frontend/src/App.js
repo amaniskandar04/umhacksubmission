@@ -16,6 +16,8 @@ import DonationSuccess from "./components/donation-success";
 import RewardsPage from "./components/rewards";
 import Navbar from "./components/Navbar"; // Navbar component for navigation
 import ProfilePage from "./components/profilePage";
+import About from "./components/About";
+import Footer from "./components/Footer";
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -24,8 +26,9 @@ const AppWrapper = () => {
   const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
   return (
-    <>
+    <div className="App">
       {!shouldHideNavbar && <Navbar />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
@@ -39,6 +42,7 @@ const AppWrapper = () => {
         <Route path='/donation' element={<DonationSuccess/>} />
       </Routes>
     </>
+
   );
 };
 
