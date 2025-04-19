@@ -13,6 +13,7 @@ import AddProject from "./components/addproject";
 import Projectpage from "./components/projectpage";
 import EditProject from "./components/editproject";
 import Navbar from "./components/Navbar"; // Navbar component for navigation
+import ProfilePage from "./components/profilePage";
 
 
 const AppWrapper = () => {
@@ -31,6 +32,7 @@ const AppWrapper = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/addproject" element={<AddProject />} />
         <Route path="/editproject" element={<EditProject />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </>
   );
