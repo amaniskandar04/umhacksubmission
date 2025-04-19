@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'analyser',
     'ledger',
+    'graph',
 ]
 
 MIDDLEWARE = [

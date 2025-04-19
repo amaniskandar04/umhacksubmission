@@ -7,51 +7,72 @@ from django.core.mail import send_mail
 from django.conf import settings
 from backend.firebase import db
 from firebase_admin import firestore
+from django.http import JsonResponse
 
 def hash_transaction_data(data: dict) -> str:
     # Convert dict to string and hash it
     data_string = f"{data['user_id']}{data['type']}{data['amount']}{data['timestamp']}{data.get('prev_hash', '')}"
     return hashlib.sha256(data_string.encode()).hexdigest()
 
-def log_transaction(user_id, transaction_type, amount):
-    # Define Malaysia timezone
-    malaysia_tz = pytz.timezone('Asia/Kuala_Lumpur')
+def log_transaction(request):
+    if request.method != 'POST':
+        return JsonResponse({'status': 'failure', 'error': 'Only POST method allowed'}, status=405)
 
-    # Get current time in Malaysia time
-    timestamp_dt = datetime.datetime.now(malaysia_tz)
-    timestamp_unix = int(timestamp_dt.timestamp())
+    try:
+        data = json.loads(request.body)
+        user_id = data['user_id']
+        amount = data['amount']
+        currency = data['currency']
+        project_id = data['project_id']
+    except (KeyError, json.JSONDecodeError) as e:
+        return JsonResponse({'status': 'failure', 'error': str(e)}, status=400)
 
-    user_txn_ref = db.collection('transactions').document(user_id).collection('transaction_log')
+    try:
+        # Malaysia time
+        malaysia_tz = pytz.timezone('Asia/Kuala_Lumpur')
+        timestamp_dt = datetime.datetime.now(malaysia_tz)
+        timestamp_unix = int(timestamp_dt.timestamp())
 
-    # Get the last transaction (sorted by timestamp descending)
-    last_txns = user_txn_ref.order_by("timestamp", direction=firestore.Query.DESCENDING).limit(1).stream()
-    prev_hash = None
-    for txn in last_txns:
-        prev_hash = txn.to_dict().get("hash")
-        break
+        user_txn_ref = db.collection('transactions').document(user_id).collection('transaction_log')
 
-    transaction_data = {
-        'user_id': user_id,
-        'type': transaction_type,
-        'amount': amount,
-        'timestamp': timestamp_dt,
-        'prev_hash': prev_hash or '',
-    }
+        # Get previous transaction hash
+        last_txns = user_txn_ref.order_by("timestamp", direction=firestore.Query.DESCENDING).limit(1).stream()
+        prev_hash = None
+        for txn in last_txns:
+            prev_hash = txn.to_dict().get("hash")
+            break
 
-    # Generate current hash
-    transaction_data['hash'] = hash_transaction_data({
-        'user_id': user_id,
-        'type': transaction_type,
-        'amount': amount,
-        'timestamp': timestamp_unix,
-        'prev_hash': prev_hash or '',
-    })
+        transaction_data = {
+            'user_id': user_id,
+            'amount': amount,
+            'currency': currency,
+            'project_id': project_id,
+            'timestamp': timestamp_dt,
+            'prev_hash': prev_hash or '',
+        }
 
-    # Save it
-    txn_ref = user_txn_ref.document(str(timestamp_unix))
-    txn_ref.set(transaction_data)
+        # Hash based on UNIX time
+        transaction_data['hash'] = hash_transaction_data({
+            'user_id': user_id,
+            'amount': amount,
+            'currency': currency,
+            'project_id': project_id,
+            'timestamp': timestamp_unix,
+            'prev_hash': prev_hash or '',
+        })
 
-    return timestamp_dt
+        # Save transaction using UNIX time as doc ID
+        txn_ref = user_txn_ref.document(str(timestamp_unix))
+        txn_ref.set(transaction_data)
+
+        return JsonResponse({
+            'status': 'success',
+            'message': 'Transaction logged successfully.',
+            'timestamp': timestamp_dt.isoformat()
+        })
+
+    except Exception as e:
+        return JsonResponse({'status': 'failure', 'error': str(e)}, status=500)
 
 def verify_transaction_chain(user_id):
     txn_ref = db.collection('transactions').document(user_id).collection('transaction_log')

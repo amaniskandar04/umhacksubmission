@@ -39,7 +39,7 @@ def test_blockchain_transaction(request):
         amount = 1000  # Example of amount
 
         # Log the transaction in Firestore first
-        txn_timestamp = log_transaction(user_id, transaction_type, amount)
+        txn_timestamp = log_transaction(request)
 
         return JsonResponse({
             "status": "success",
