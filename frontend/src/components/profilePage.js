@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProfileHeader from './profileHeader';
-import './ProfilePage.css';
+import './profilePage.css';
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('Overview');
