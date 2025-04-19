@@ -103,7 +103,7 @@ const Projectpage = () => {
         ></div>
       </div>
 
-      <p className="smallText">
+      <p className="smallTextProjectPage">
         RM {project.CurrentAmount} / {project.NeededAmount} collected!
       </p>
 

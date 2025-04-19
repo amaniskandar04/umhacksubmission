@@ -17,7 +17,8 @@ const Timeline = ({ currentStep }) => {
     <div className="timeline-box">
       <div className="timeline-wrapper">
         {status.map((step, index) => {
-          const isActive = index <= currentStep;
+          //const isActive = index <= currentStep;
+          const isActive = index === 0;
           return (
             <div key={index} className="timeline-step">
               <div

@@ -24,7 +24,10 @@ const RewardsPage = () => {
 
   return (
     <div className="rewards-page">
-      <h2>Your Points: {userPoints}</h2>
+      <div className="points-box">
+        <h2>Your Points</h2>
+        <p>{userPoints}</p>
+      </div>
       <div className="rewards-grid">
         {rewards.map((reward) => (
           <div className="reward-card" key={reward.id}>

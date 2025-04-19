@@ -20,7 +20,7 @@ const Home = () => {
       {/* Banner Section */}
       <div className="banner">
         <img src="images/masjid2.jpg" alt="Banner" className="banner-image" />
-        <div className="image-gradient"></div>
+        <div className="image-gradient-home"></div>
         <div className="image-overlay">
           <h1>Welcome to Easy2Wakaf</h1>
           <p>Empowering communities through consistent and meaningful giving.</p>
