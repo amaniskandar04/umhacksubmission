@@ -1,6 +1,10 @@
 import datetime
 import pytz
 import hashlib
+import json
+import os
+from django.core.mail import send_mail
+from django.conf import settings
 from backend.firebase import db
 from firebase_admin import firestore
 
@@ -57,27 +61,45 @@ def verify_transaction_chain(user_id):
     for txn in txns:
         data = txn.to_dict()
 
-        # Save the current hash and remove it temporarily to re-hash
         stored_hash = data['hash']
         data_copy = data.copy()
         del data_copy['hash']
-
-        # Convert Firestore timestamp to Unix timestamp (int) if it's a datetime object
-        ts = data_copy['timestamp']
-        if isinstance(ts, datetime.datetime):  # Use datetime.datetime explicitly
-            data_copy['timestamp'] = int(ts.timestamp())
-        else:
-            data_copy['timestamp'] = int(ts)  # fallback if already int/str
-
-        # Add expected prev_hash before rehashing
         data_copy['prev_hash'] = prev_hash
 
-        # Recalculate hash
         recalculated_hash = hash_transaction_data(data_copy)
 
         if stored_hash != recalculated_hash:
-            return {"valid": False, "message": f"Hash mismatch at timestamp {data['timestamp']}"}
+            # Find which fields were tampered
+            differences = {}
+            for key in data_copy:
+                if key in data and data[key] != data_copy[key]:
+                    differences[key] = {
+                        "expected": data_copy[key],
+                        "found": data[key]
+                    }
+
+            return {
+                "valid": False,
+                "message": f"Tampering detected at timestamp {data['timestamp']}",
+                "timestamp": data['timestamp'],
+                "differences": differences
+            }
 
         prev_hash = stored_hash
 
     return {"valid": True, "message": "All transactions valid"}
+
+def send_tamper_alert_email(user_id, timestamp, differences):
+    subject = f"[ALERT] Blockchain Tampering Detected for User {user_id}"
+    message = (
+        f"Tampering detected in user {user_id}'s transaction at {timestamp}.\n\n"
+        f"Modified fields:\n{json.dumps(differences, indent=4)}"
+    )
+
+    send_mail(
+        subject,
+        message,
+        settings.EMAIL_HOST_USER,
+        [os.getenv('ALERT_RECEIVER')],
+        fail_silently=False,
+    )

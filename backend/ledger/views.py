@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .firebase_utils import log_transaction, verify_transaction_chain
+from .firebase_utils import log_transaction, verify_transaction_chain, send_tamper_alert_email
 from backend.firebase import db
 from firebase_admin import firestore
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+@api_view(['POST'])
 def log_transaction_view(request):
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        txn_type = request.POST.get('type')  # 'debit' or 'credit'
-        amount = float(request.POST.get('amount', 0))
+        user_id = request.data.get('user_id')
+        txn_type = request.data.get('type')  # 'debit' or 'credit'
+        amount = float(request.data.get('amount', 0))
 
         if not all([user_id, txn_type, amount]):
             return JsonResponse({'error': 'Missing parameters'}, status=400)
@@ -20,14 +21,16 @@ def log_transaction_view(request):
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
+@api_view(['POST'])
 def verify_chain_view(request):
-    user_id = request.GET.get('user_id')
+    user_id = request.data.get('user_id')
     if not user_id:
         return JsonResponse({'error': 'Missing user_id'}, status=400)
 
     is_valid = verify_transaction_chain(user_id)
     return JsonResponse({'valid': is_valid})
 
+@api_view(['POST'])
 def test_blockchain_transaction(request):
     try:
         # Prepare the transaction data with all required fields
@@ -49,9 +52,30 @@ def test_blockchain_transaction(request):
             "error": str(e)
         })
         
-@api_view(['GET'])
+def test_tamper_email(request):
+    # Simulated values for the alert
+    user_id = 'testuser123'
+    timestamp = '2025-04-18T14:00:00+08:00'
+    differences = {
+        "amount": {
+            "expected": 100,
+            "actual": 1000000
+        },
+        "type": {
+            "expected": "credit",
+            "actual": "debit"
+        }
+    }
+
+    try:
+        send_tamper_alert_email(user_id, timestamp, differences)
+        return JsonResponse({"status": "success", "message": "Email sent!"})
+    except Exception as e:
+        return JsonResponse({"status": "failure", "error": str(e)})
+        
+@api_view(['POST'])
 def test_blockchain_validation(request):
-    user_id = request.GET.get('user_id')
+    user_id = request.data.get('user_id')
     if not user_id:
         return Response({"status": "failure", "message": "user_id not provided"}, status=400)
 

@@ -5,8 +5,6 @@ import "./Slider1.css";
 
 import axios from "axios";
 
-console.log("Slider1 component loaded");
-
 const CardSlider = () => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate(); // ✅ initialize navigate
@@ -20,7 +18,6 @@ const CardSlider = () => {
       .catch((err) => {
         console.error("Error fetching projects:", err);
       });
-      
   }, []);
 
   const settings = {

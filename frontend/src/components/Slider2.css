@@ -1,38 +1,57 @@
 .slider-card {
-    padding: 20px;
-    background: #f9f9f9;
-    text-align: left;
-    border-radius: 8px;
-    height: 400px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .slider-card h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  .slider-card p {
-    font-size: 14px;
-    line-height: 1.5;
-    max-height: 60px; /* Limits the height of the text box */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* show only 3 lines */
-    -webkit-box-orient: vertical;
-  }
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(238, 222, 222, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
 
-  .slider-wrapper {
-    padding: 0 15px; /* Adds spacing BETWEEN cards */
-    box-sizing: border-box;
-  }
+.slider-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .slider-image {
-    width: 100%;
-    height: 150px; /* or whatever fits */
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-    margin-bottom: 10px;
-  }
+.slider-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding-top: 50px;
+}
+
+.slider-overlay button {
+  background-color: #139D90;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  height: fit-content;
+  width: 50%;
+}
+
+.slider-overlay button:hover {
+  background-color: #0f7e75;
+}
+
+.slider-wrapper {
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow: hidden; /* prevents children from sticking out */
+}
