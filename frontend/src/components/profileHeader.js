@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ProfilePage.css';
+import './profilePage.css';
 import CardSlider from './Slider1';
 import { MoreHorizontal } from 'lucide-react';
 

@@ -6,14 +6,17 @@
   margin: 50px 5% 0 5%;
 }
 
-.project-text {
+
+.project-text{
+  margin-bottom: 10px;
+  font-size: 24px;
+  
+  
   flex: 1;
 }
 
-.project-text h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-  text-align: center;
+.project-text h2{
+  margin-bottom: 5px;
 }
 
 .project-text p {
@@ -27,6 +30,11 @@
   height: 400px;
   border-radius: 8px;
   object-fit: cover;
+}
+
+.timeline-box{
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /* Gallery Section */
@@ -232,3 +240,18 @@
   text-align: center;
   width: 100px;
 }
+
+.timeline-box {
+  background-color: #f9f9f9; /* light gray */
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 90%;
+  overflow-x: auto;
+}
+
+.timeline-box h2{
+  text-align: center;
+}
+

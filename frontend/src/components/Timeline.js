@@ -14,22 +14,24 @@ const Timeline = ({ currentStep }) => {
   ];
 
   return (
-    <div className="timeline-wrapper">
-      {status.map((step, index) => {
-        const isActive = index <= currentStep;
-        return (
-          <div key={index} className="timeline-step">
-            <div
-              className={`timeline-circle ${isActive ? "active" : ""}`}
-            >
-              {step.icon}
+    <div className="timeline-box">
+      <div className="timeline-wrapper">
+        {status.map((step, index) => {
+          const isActive = index <= currentStep;
+          return (
+            <div key={index} className="timeline-step">
+              <div
+                className={`timeline-circle ${isActive ? "active" : ""}`}
+              >
+                {step.icon}
+              </div>
+              <p className="timeline-label">{step.label}</p>
             </div>
-            <p className="timeline-label">{step.label}</p>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
-};
+}  
 
 export default Timeline;

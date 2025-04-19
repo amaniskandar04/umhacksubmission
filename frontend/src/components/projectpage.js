@@ -108,8 +108,8 @@ const Projectpage = () => {
       </p>
 
       {/* Timeline */}
-      <div className="max-w-6xl mx-auto">
-        <h2 className="project-text">Project Progress</h2>
+      <div className="timeline-box">
+        <h2>Project Progress</h2>
         <Timeline currentStep={parseInt(project.ProjectTimelineState)} />
       </div>
 
