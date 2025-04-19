@@ -143,7 +143,7 @@ const Projectpage = () => {
       </div>
 
       {/* Gallery */}
-      {/*<h2 className="project-progression-gallery">Project Progression Gallery</h2>
+      <h2 className="project-progression-gallery">Project Progression Gallery</h2>
       <div className="gallery">
         {project.ProjectPicDetails.map((item, index) => (
           <div
@@ -151,30 +151,15 @@ const Projectpage = () => {
             className={`gallery-item ${activeIndex === index ? "active" : ""}`}
             onClick={() => toggleActive(index)}
           >
-            <img src={item.imageUrl} alt={item.alt} />
+            <img src={item} alt={`Project Detail ${index + 1}`} />
             <div className="gallery-text">
-              <p>{item.description}</p>
+              <p>Great Builds are ahead! So Epic!</p>
             </div>
           </div>
         ))}
-      </div>*/}
-
-      <h2 className="project-progression-gallery">Project Progression Gallery</h2>
-      <div className="gallery">
-          {/* Replaced dynamic project.ProjectPicDetails with hardcodedGallery */}
-          {hardcodedGallery.map((item, index) => (
-            <div
-              key={index}
-              className={`gallery-item ${activeIndex === index ? "active" : ""}`}
-              onClick={() => toggleActive(index)}
-            >
-              <img src={item.imageUrl} alt={item.alt} />
-              <div className="gallery-text">
-                <p>{item.description}</p>
-              </div>
-            </div>
-          ))}
       </div>
+
+
       
       
     </>
