@@ -28,6 +28,7 @@ const AppWrapper = () => {
       {!shouldHideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/projectpage/:id" element={<Projectpage />} />
         <Route path="/register" element={<Register />} />
