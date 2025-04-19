@@ -15,6 +15,7 @@ import EditProject from "./components/editproject";
 import DonationSuccess from "./components/donation-success";
 import RewardsPage from "./components/rewards";
 import Navbar from "./components/Navbar"; // Navbar component for navigation
+import ProfilePage from "./components/profilePage";
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -32,6 +33,7 @@ const AppWrapper = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/addproject" element={<AddProject />} />
         <Route path="/editproject" element={<EditProject />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/rewards" element={<RewardsPage/>} />
       </Routes>
     </>
