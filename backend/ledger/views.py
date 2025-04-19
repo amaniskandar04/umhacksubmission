@@ -6,12 +6,12 @@ from firebase_admin import firestore
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-@api_view(['GET'])
+@api_view(['POST'])
 def log_transaction_view(request):
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        txn_type = request.POST.get('type')  # 'debit' or 'credit'
-        amount = float(request.POST.get('amount', 0))
+        user_id = request.data.get('user_id')
+        txn_type = request.data.get('type')  # 'debit' or 'credit'
+        amount = float(request.data.get('amount', 0))
 
         if not all([user_id, txn_type, amount]):
             return JsonResponse({'error': 'Missing parameters'}, status=400)
@@ -21,16 +21,16 @@ def log_transaction_view(request):
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def verify_chain_view(request):
-    user_id = request.GET.get('user_id')
+    user_id = request.data.get('user_id')
     if not user_id:
         return JsonResponse({'error': 'Missing user_id'}, status=400)
 
     is_valid = verify_transaction_chain(user_id)
     return JsonResponse({'valid': is_valid})
 
-@api_view(['GET'])
+@api_view(['POST'])
 def test_blockchain_transaction(request):
     try:
         # Prepare the transaction data with all required fields
@@ -73,9 +73,9 @@ def test_tamper_email(request):
     except Exception as e:
         return JsonResponse({"status": "failure", "error": str(e)})
         
-@api_view(['GET'])
+@api_view(['POST'])
 def test_blockchain_validation(request):
-    user_id = request.GET.get('user_id')
+    user_id = request.data.get('user_id')
     if not user_id:
         return Response({"status": "failure", "message": "user_id not provided"}, status=400)
 
